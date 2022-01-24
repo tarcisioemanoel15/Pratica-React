@@ -19,59 +19,46 @@
 <body>
 
   <div id="App"></div>
-  <!---->
+  <!--
+-->
+
   <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
 
 
   <script>
-    //fazer sem ter que passar de um em um
-
-                    // OBS este é createContext
-    const NomeContext = React.createContext('nome');
-
-    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//passando do pai pro filho
 
     function MeuComponente1() {
-      const meuNome = 'Tarcisio E';
+      const nome = 'Tarcisio';
       return (
-        // Prover para enviar
-        React.createElement(NomeContext.Provider, { value: meuNome },
-          React.createElement('div', { className: 'componente-1' },
-            React.createElement(MeuComponente2, { nome: meuNome })
-          )
+        React.createElement('div', { className: 'componente-1' },
+          React.createElement(MeuComponente2, {nome: nome})
         )
       )
     }
-    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
-    function MeuComponente2() {
+
+    function MeuComponente2(props) {
       return (
         React.createElement('div', { className: 'componente-2' },
-          React.createElement(MeuComponente3)
+          React.createElement(MeuComponente3, {nome: props.nome})
         )
       )
     }
-
-    function MeuComponente3() {
-
+    function MeuComponente3(props) {
+      
       return (
         React.createElement('div', { className: 'componente-3' },
-          React.createElement(MeuComponente4)
+          React.createElement(MeuComponente4, {nome: props.nome})
         )
       )
     }
-
-    function MeuComponente4() {
+    function MeuComponente4(props) {
       return (
-        React.createElement(NomeContext.Consumer, null,
-          (nome) => (
-            React.createElement('div', { className: 'componente-4' },
-              React.createElement('p', null, nome)
-
-            )
-          )
+        React.createElement('div', { className: 'componente-4' },
+          React.createElement('p', {id: 'component-idd'}, props.nome)
         )
       )
     }
