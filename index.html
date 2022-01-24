@@ -27,7 +27,7 @@
 
 
   <script>
-
+//passando do pai pro filho
 
     function MeuComponente1() {
       return (
@@ -47,16 +47,17 @@
       )
     }
     function MeuComponente3() {
+      const nome = 'Tarcisio';
       return (
         React.createElement('div', { className: 'componente-3' },
-          React.createElement(MeuComponente4)
+          React.createElement(MeuComponente4, {nome: nome})
         )
       )
     }
-    function MeuComponente4() {
+    function MeuComponente4(props) {
       return (
         React.createElement('div', { className: 'componente-4' },
-          React.createElement('p', {id: 'component-idd'}, 'ola mundo')
+          React.createElement('p', {id: 'component-idd'}, props.nome)
         )
       )
     }
