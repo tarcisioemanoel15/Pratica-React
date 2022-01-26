@@ -48,14 +48,14 @@ function MeuComponente4(props) {
     setIdade(100)
   }, 1000)
 
-  // function clickBotao(){
-  //  console.log('clicouu');
-  // }
+  function clickBotao(){
+    console.log('clicouu');
+  }
 
   return (
     <div className="componentes-4">
       <p>Meu componente 4 {props.nome} - {idade} - {props.telefone}</p>
-      <button type="bbutton" onClick={() => {console.log('clicouu');}}>Incrementar</button>
+      <button type="bbutton" onClick={clickBotao}>Incrementar</button>
     </div>
   )
 }
@@ -70,28 +70,17 @@ function MeuComponente() {
   )
 }
 
-function MeuComponenteIrmao(props){
+function MeuComponenteIrmao(){
   return(
-   <div id="componente-irmao">
-     <MeuComponenteIrmao2 contador={props.contador} />
-
-   </div>
-  )
-}
-
-
-function MeuComponenteIrmao2(props){
-  return (
-    <h2>Contador: { props.contador}</h2>
+    <h1>Componente Irmão</h1>
   )
 }
 
 function AppComponente(){
-  const [contador, incrementaContador ] = React.useState(0);
   return(
     <React.Fragment>
     <MeuComponente />
-    <MeuComponenteIrmao contador={contador}/>
+    <MeuComponenteIrmao />
     </React.Fragment>
   )
 }
