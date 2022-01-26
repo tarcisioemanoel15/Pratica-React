@@ -1,19 +1,18 @@
 // no terminal para ezecutar no servidor
 
+// Renderizando mais elementos na pagina
 const NomeContext = React.createContext('nome');
 
 function MeuComponente1() {
- // const meuNome = 'Tarcisio Emanoel';
   return (
-
     < div className="componentes-1">
       <MeuComponente2 >
         <MeuComponente3 />
       </MeuComponente2>
     </div>
-
   )
 }
+
 
 function MeuComponente2(props) {
   return (
@@ -22,18 +21,16 @@ function MeuComponente2(props) {
         <headers>{props.children}</headers>
         <footer> </footer>
       </div>
-
     </div>
   )
 }
+
 
 function MeuComponente3() {
   const [telefone, setTelefone] = React.useState('74999 999 999');
  setTimeout(function(){
   setTelefone('1234567890')
 },150)
-
-
   return (
     <div id="componentes-3">
       <MeuComponente4 telefone={telefone}/>
@@ -41,9 +38,9 @@ function MeuComponente3() {
   )
 }
 
+
 function MeuComponente4(props) {
   const [idade, setIdade] = React.useState(28);
-
   setTimeout(function() {
     setIdade(100)
   }, 1000)
@@ -53,8 +50,7 @@ function MeuComponente4(props) {
     </div>
   )
 }
-//    <NomeContext.Consumer> </NomeContext.Consumer>
-//  {(nomeContext) => ()}
+
 
 
 function MeuComponente() {
@@ -65,7 +61,22 @@ function MeuComponente() {
   )
 }
 
+function MeuComponenteIrmao(){
+  return(
+    <h1>Componente Irmão</h1>
+  )
+}
+
+function AppComponente(){
+  return(
+    <React.Fragment>
+    <MeuComponente />
+    <MeuComponenteIrmao />
+    </React.Fragment>
+  )
+}
+
 ReactDOM.render(
-  <MeuComponente />,
+  <AppComponente />,
   document.getElementById('App')
 )

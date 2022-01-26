@@ -2,7 +2,6 @@
 const NomeContext = React.createContext('nome');
 
 function MeuComponente1() {
-  // const meuNome = 'Tarcisio Emanoel';
   return /*#__PURE__*/React.createElement("div", {
     className: "componentes-1"
   }, /*#__PURE__*/React.createElement(MeuComponente2, null, /*#__PURE__*/React.createElement(MeuComponente3, null)));
@@ -34,9 +33,7 @@ function MeuComponente4(props) {
   return /*#__PURE__*/React.createElement("div", {
     className: "componentes-4"
   }, /*#__PURE__*/React.createElement("p", null, "Meu componente 4 ", props.nome, " - ", idade, " - ", props.telefone));
-} //    <NomeContext.Consumer> </NomeContext.Consumer>
-//  {(nomeContext) => ()}
-
+}
 
 function MeuComponente() {
   return /*#__PURE__*/React.createElement("div", {
@@ -44,4 +41,12 @@ function MeuComponente() {
   }, /*#__PURE__*/React.createElement(MeuComponente1, null));
 }
 
-ReactDOM.render( /*#__PURE__*/React.createElement(MeuComponente, null), document.getElementById('App'));
+function MeuComponenteIrmao() {
+  return /*#__PURE__*/React.createElement("h1", null, "Componente Irm\xE3o");
+}
+
+function AppComponente() {
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(MeuComponente, null), /*#__PURE__*/React.createElement(MeuComponenteIrmao, null));
+}
+
+ReactDOM.render( /*#__PURE__*/React.createElement(AppComponente, null), document.getElementById('App'));
