@@ -1,6 +1,5 @@
 // no terminal para ezecutar no servidor
 
-// Renderizando mais elementos na pagina
 const NomeContext = React.createContext('nome');
 
 function MeuComponente1(props) {
@@ -13,8 +12,8 @@ function MeuComponente1(props) {
   )
 }
 
-
 function MeuComponente2(props) {
+
   return (
     <div id="componentes-2">
       <div>
@@ -24,7 +23,6 @@ function MeuComponente2(props) {
     </div>
   )
 }
-
 
 function MeuComponente3(props) {
   const [telefone, setTelefone] = React.useState('74999 999 999');
@@ -38,12 +36,7 @@ function MeuComponente3(props) {
   )
 }
 
-  
-
-  
-
 function MeuComponente4(props) {
-
   const [idade, setIdade] = React.useState(28);
 
   setTimeout(function() {
@@ -56,10 +49,7 @@ function MeuComponente4(props) {
       <button type="bbutton" onClick={props.onClickIncrementar}>Incrementar</button>
     </div>
   )
-
 }
-
-
 
 function MeuComponente(props) {
   return (
@@ -73,20 +63,22 @@ function MeuComponenteIrmao(props){
   return(
    <div id="componente-irmao">
      <MeuComponenteIrmao2 contador={props.contador} />
-
    </div>
   )
 }
 
-
 function MeuComponenteIrmao2(props){
+  React.useEffect(function() {
+    // console.log('Criou ou Alterou');
+    localStorage.setItem('contador', props.contador)
+   });
   return (
     <h2>Contador: { props.contador}</h2>
   )
 }
 
 function AppComponente(){
-  const [contador, incrementaContador ] = React.useState(0);
+  const [contador, incrementaContador ] = React.useState(parseInt(localStorage.getItem('contador'), 10) || 0);
 
   const clickIncrementa = function(){
     incrementaContador(contador + 1);
